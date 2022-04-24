@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="box" onmouseover="jr()" onmouseout="lk()">
+        <input type="checkbox" > 两周内自动登录
+        <p>测试</p>
+    </div>
+    
+</body>
+</html>
+<script>
+  var inp =document.querySelector('p')
+  function jr(){
+      console.log(1);
+      inp.style.display="block"
+  }
+  function lk (){
+      inp.style.display='none'
+  }
+</script>
+<style>
+    p{
+        display: none;
+    }
+</style>

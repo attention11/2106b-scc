@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+     <div class="box">
+          <ul>
+              <button onclick="bk()">变宽</button>
+              <button onclick="bg()">变高</button>
+              <button onclick="bs()">变色</button>
+              <button onclick="yc()">隐藏</button>
+              <button onclick="cz()">重置</button>
+          </ul>
+        <div id="box1"></div>
+        </div>
+</body>
+</html>
+<script>
+    var bk1 =document.getElementById("box1")
+    function bk (){
+        bk1.style.width="500px"
+    }
+    function bg(){
+        bk1.style.height="500px"
+    }
+    function bs(){
+        bk1.style.background="#d03534"
+    }
+    function yc(){
+        bk1.style.display="none"
+    }
+    function cz (){
+        // bk1.style.display="block"
+        // bk1.style.width="300px"
+        // bk1.style.height="300px"
+        // bk1.style.background="#000"
+        bk1.style.cssText="background:'#000'; width:'300px';height:'300px';display:'none'"
+    }
+</script>
+<style>
+    #box1{
+        height: 300px;
+        width: 300px;
+        background: #000;
+        
+    }
+</style>

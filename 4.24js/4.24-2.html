@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+      <input type="text" class="in1"> VS <input type="text" class="in2"> <button onclick="dj()">最大的数是</button><span></span>
+</body>
+</html>
+<script>
+    var in1=document.querySelector('.in1')
+    var in2=document.querySelector('.in2')
+    var sp=document.querySelector('span')
+    var num3=0
+    function dj (){
+        let num=parseInt(in1.value)
+        let num1=parseInt(in2.value)
+        console.log(num,num1);
+        if(num>num1){
+             num3=num
+        }else{
+            num3=num1
+        }
+        sp.innerHTML=num3
+    }
+</script>

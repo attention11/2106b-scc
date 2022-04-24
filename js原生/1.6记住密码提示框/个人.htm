@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8k">
+        <title>mydemo</title>
+        <style type="text/css">
+            body,input,#outer p {margin:0;padding:0}
+            html,body {height:100%}
+            #outer {width:200px;margin:0 auto;text-align:center;cursor:pointer;}
+            #outer p {display:inline-block;line-height:13px;font-size:13px;}
+            #outer input {display:inline-block;cursor:pointer;}
+            
+            #tips {display:none;}
+         </style>
+        <script type="text/javascript">
+            window.onload = function() {
+                var oDiv = document.getElementById("outer");
+                var oTips = document.getElementById("tips");
+                oDiv.onmouseover = function() {
+                    oTips.style.display="block";
+                }
+                oDiv.onmouseout = function() {
+                    oTips.style.display="none";
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <div id="outer">
+            <input type="checkbox" />
+            <p>两周内自动登陆</p>
+            <div id="tips">测试</div>
+        </div>
+    </body>
+</html>

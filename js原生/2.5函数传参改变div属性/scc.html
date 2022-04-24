@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+     <div class="box1">
+         <span>属性名</span>: <input class="i1"  type="text" value="background">
+     </div>
+     <div class="box2">
+        <span>属性值</span>: <input class="i2"  type="text" value="green">
+    </div>
+     <div class="box3">
+         <button onclick="qd()">确定</button>
+         <button onclick="cz()">重置</button>
+     </div>
+     <div class="box4">
+         <span>请在上浮输入啊实打实大苏打</span>
+     </div>
+</body>
+</html>
+<script>
+    var sxm1=document.querySelector('.i1')
+    var sxm2=document.querySelector('.i2')
+    var box =document.querySelector('.box4')
+    function qd (){
+       
+        
+       box.style.cssText=`${sxm1.value}:${sxm2.value}`
+    }
+    function cz (){
+        box.style.cssText="background:#000;color:#fff;"
+    }
+</script>
+<style>
+    .box4{
+        height: 200px;
+        width: 200px;
+        background: #000;
+        color: #fff;
+    }
+</style>

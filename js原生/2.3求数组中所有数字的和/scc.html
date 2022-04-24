@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" value="1,2,3"><span>输入数字求和,数字之间用，号隔开</span>
+    <button onclick="qh()">求和</button>
+    <span class="s1"></span>
+</body>
+</html>
+<script>
+    var inp =document.querySelector('input')
+    var spa=document.querySelector('.s1')
+   
+    function qh (){
+        var cc =0
+        let aa= inp.value
+        
+       let bb= aa.split(',')
+        bb.forEach(item=>{
+          cc +=parseInt(item)
+        })
+        spa.innerHTML=cc
+        // inp.value=''
+    }
+</script>

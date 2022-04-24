@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+     <div class="box">
+        <div class="box1" onclick="bs1()"></div>
+        <div class="box2"  onclick="bs2()"></div>
+        <div class="box3"  onclick="bs3()"></div>
+     </div>
+     <div class="box11">
+         <ul>
+             <li>新闻</li>
+             <li>娱乐</li>
+             <li>体育</li>
+             <li>电影</li>
+             <li>音乐</li>
+             <li>旅游</li>
+         </ul>
+     </div>
+</body>
+</html>
+<script>
+    var body1 =document.querySelector('body')
+    var li1 =document.querySelectorAll('li')
+    function bs1(){
+   
+    body1.style.background='red'
+    // console.log(li1.style.background);
+    li1.forEach(item=>{
+        item.style.background="#6ebdb4"
+    })
+       
+    }
+    function bs2 (){
+        body1.style.background="green"
+        li1.forEach(item=>{
+        item.style.background="#fdd9bf"
+    })
+       
+    }
+    function bs3 (){
+        body1.style.background='#000'
+        li1.forEach(item=>{
+            item.style.background="#fa9c9f"
+        })
+    }
+</script>
+<style>
+    *{
+        list-style: none;
+
+    }
+   ul{
+       display: flex;
+   }
+   li{
+       margin-left: 15px;
+   }
+    .box1{
+        height: 20px;
+        width: 20px;
+        background: red;
+        display: inline-block;
+    }
+    .box2{
+        height: 20px;
+        width: 20px;
+        background: green;
+        display: inline-block;
+    }
+    .box3{
+        height: 20px;
+        width: 20px;
+        background: #000;
+        display: inline-block;
+    }
+    
+</style>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button onclick="bs()">点击成红</button>
+    <div class="box1">
+
+    </div>
+    <div class="box1">
+
+    </div>
+    <div class="box1">
+
+    </div>
+</body>
+</html>
+<script>
+ var box1 =document.querySelectorAll('.box1')
+
+
+  
+ function bs(){
+     console.log(1);
+     box1.forEach(item=>{
+        // console.log(item);
+          item.style.background="red"
+     })
+   
+ }
+</script>
+<style>
+    .box1{
+        display: inline-block;
+         margin-left: 20px;
+        background: #000;
+        width: 200px;
+        height: 200px;
+    }
+</style>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta type="utf-8">
+        <title>mydemo</title>
+        <style type="text/css">
+            body,div(margin:0;padding:0);
+            html,body{height:100;}
+            div {width:300px;margin:10px auto;text-align: center;}
+            input {margin:5px 0;}
+            button {cursor:pointer;}
+        </style>
+        <script type="text/javascript">
+            function transFun (){
+                var line = document.getElementsByName("mission");
+                for(var i=0;i<line.length;i++){
+                    
+                    alert(line[i].value);                    
+                }
+            }
+        </script>
+    </head>
+    <body>
+       <div>
+            <input type="text" name="mission" value="北京市" />
+            <input type="text" name="mission" value="朝阳区" /><br />
+            <input type="button" value="传参" id="transFun" onclick=transFun() />
+       </div>
+    </body>
+</html>

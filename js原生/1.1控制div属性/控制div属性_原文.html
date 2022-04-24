@@ -1,0 +1,58 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>控制div属性</title>
+<style>
+#outer{width:500px;margin:0 auto;padding:0;text-align:center;}
+#div1{width:100px;height:100px;background:black;margin:10px auto;}
+</style>
+<script>
+//自定义函数，满足函数中对应的数组赋值；
+var changeStyle = function (elem, attr, value)
+{
+	elem.style[attr] = value;
+}
+window.onload = function ()
+{
+	var oBtn = document.getElementsByTagName("input");//以数组的形式获取input标签；
+	var oDiv = document.getElementById("div1");//获取id为div1的标签
+	/*oAtt和oVal连变量用来控制没有input的属性和属性值*/
+	var oAtt = ["width","height","background","display","display"];//定义数组变量存储样式属性
+	var oVal = ["200px","200px","red","none","block"];//定义数组变量存储样式属性值
+
+	/*为每个按钮附加点击事件或者点击效果*/
+	for (var i = 0; i < oBtn.length; i++)
+	{
+		oBtn[i].index = i;//固定格式，用以代表某个input标签，i代表编号
+		oBtn[i].onclick = function ()
+		{
+			this.index == oBtn.length - 1 && (oDiv.style.cssText = "");
+			/*
+			this.index == oBtn.length - 1 //判断这个按钮是不是最后一个按钮 也就是重置按钮
+
+			//&&  且运算符 只有前面的运算子成立 后面的运算才会执行 
+
+			//上面代码等价于:if (this.index == oBtn.length - 1) {oDiv.style.cssText = ""} 取空值，是为了保证原有样式的不变。这样就同理于重置了
+
+			// alert(this.index);显示当前按钮的索引值，与下文的this.index值相等。
+			*/
+			changeStyle(oDiv, oAtt[this.index], oVal[this.index]);
+		}
+	}
+
+};
+</script>
+</head>
+<body>
+<div id="outer">
+<input type="button" value="变宽" />
+<input type="button" value="变高" />
+<input type="button" value="变色" />
+<input type="button" value="隐藏" />
+<input type="button" value="重置" />
+<div id="div1"></div>
+</div>
+</body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="inp1" placeholder="北京市">
+    <input type="text" id="inp1" placeholder="朝阳区">
+    <button onclick="cs()" >传参</button>
+</body>
+</html>
+<script>
+    var model1 =document.querySelectorAll('input')
+ function cs (){
+    console.log(model1[0].value);
+    alert(`${model1[0].value}`)
+    alert(`${model1[1].value}`)
+    
+ }
+</script>
