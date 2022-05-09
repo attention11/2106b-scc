@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="box" id="box1">
+        点击方块就能打分
+        <div class="aa"><span></span>
+            <p>11111</p>
+        </div>
+        <div class="aa"><span></span>
+            <p>22222</p>
+        </div>
+        <div class="aa"><span></span>
+            <p>33333</p>
+        </div>
+        <div class="aa"><span></span>
+            <p>44444</p>
+        </div>
+        <div class="aa"><span></span>
+            <p>555555</p>
+        </div>
+
+    </div>
+</body>
+<script>
+    var span = document.querySelectorAll('span')
+    var ps = document.querySelectorAll('p')
+    var box = document.querySelector('.box')
+    for (var i = 0; i < span.length; i++) {
+        let a = i
+        span[a].onmousemove = function () {
+            span[a].style.backgroundColor = '#04ffff'
+            ps[a].style.display = 'inline-block'
+        }
+        span[a].onmouseout = function () {
+            ps[a].style.display = 'none'
+        }
+        //    
+    }
+</script>
+
+</html>
+<style>
+    span {
+        display: inline-block;
+        height: 30px;
+        width: 30px;
+        border: 1px solid #04ffff;
+        border-radius: 50%;
+    }
+
+    .box {
+        display: flex;
+        width: 600px;
+        height: 100px;
+    }
+
+    p {
+        display: none;
+
+    }
+
+    .aa {
+        display: flex;
+        flex-direction: column;
+    }
+
+    html {
+        height: 100%;
+    }
+
+    body {
+        height: 100%;
+    }
+</style>

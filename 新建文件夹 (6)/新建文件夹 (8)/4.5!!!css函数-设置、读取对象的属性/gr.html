@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="box">
+        <span>getstyle</span>
+        <span>setstyle</span>
+        <span>deltstyle</span>
+    </div>
+</body>
+
+</html>
+<script>
+    var span1 = document.querySelectorAll('span');
+    var div = document.querySelector('.box')
+    span1[0].onclick = function () {
+        var x = window.getComputedStyle(div)
+        console.log(x);
+        alert('width:' + x.width + '\n' + 'height:' + x.height + '\n' + 'background-color:' + x.backgroundColor)
+        span1[0].style.border = '1px solid #000'
+        span1[2].style.border = ''
+        span1[1].style.border = ''
+    }
+    span1[1].onclick = function () {
+        div.style.border = '1px solid #00ffff'
+        div.style.backgroundColor = 'rgba(239, 248, 255)'
+        span1.forEach(item => {
+            item.style.backgroundColor = '#00ffff'
+            item.style.color = '#fff'
+        })
+        div.style.width = '300px'
+        div.style.height = '150px'
+        span1[1].style.border = '1px solid #000'
+        span1[0].style.border = ''
+        span1[2].style.border = ''
+
+    }
+    span1[2].onclick = function () {
+        div.style.border = '1px solid #ffa500'
+        div.style.backgroundColor = 'rgba(254, 244, 235)'
+        span1.forEach(item => {
+            item.style.backgroundColor = '#ffa500'
+            item.style.color = '#fff'
+        })
+        div.style.width = '500px'
+        div.style.height = '200px'
+        span1[2].style.border = '1px solid #000'
+        span1[0].style.border = ''
+        span1[1].style.border = ''
+    }
+</script>
+<style>
+    .box {
+        width: 500px;
+        height: 200px;
+        margin: 20px auto;
+        border: 1px solid #ffa500;
+        background-color: rgba(254, 244, 235)
+    }
+
+    span {
+        background-color: #ffa500;
+        display: inline-block;
+        margin: 8px;
+        color: #fff;
+        ;
+    }
+</style>

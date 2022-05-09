@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>my</title>
+	<style>
+		body,div,ul,li,p{margin:0;padding:0;}
+body{color:#666;font:12px/1.5 Arial;}
+ul{list-style-type:none;}
+#star {position:relative;width:600px;height:80px;margin:10px auto;padding:2px;border:1px solid black;overflow:hidden;}
+#star ul,#star span{float:left;height:20px;line-height:20px;}
+#star ul{margin:0 10px;}
+#star li{float:left;width:18px;cursor:pointer;border:1px solid #0ff;margin-right:5px;height:18px;}
+
+#star strong{color:#f60;padding-left:10px;}
+#star li.on {background:#0ff;}
+
+#star p{position:absolute;top:20px;left:230px;display:none;width:159px;padding:3px;}
+#star p em{color:#f60;display:block;font-style:normal;}
+	</style>
+	<script>
+		window.onload = function() {
+			var oStar = document.getElementById("star");
+			var aLi = oStar.getElementsByTagName("li");
+			var oUl = oStar.getElementsByTagName("ul")[0];
+			var oSpan = oStar.getElementsByTagName("span")[1];
+			var oP = oStar.getElementsByTagName("p")[0];
+			var i = iScore = iStar = 0;
+			var aMsg = ["很不满意|差得太离谱，与卖家描述的严重不符，非常不满",
+				"不满意|部分有破损，与卖家描述的不符，不满意",
+				"一般|质量一般，没有卖家描述的那么好",
+				"满意|质量不错，与卖家描述的基本一致，还是挺满意的",
+				"非常满意|质量非常好，与卖家描述的完全一致，非常满意"]
+
+			for (i=1;i<=aLi.length;i++) {
+				aLi[i-1].index = i;
+				//鼠标移过显示分数
+				aLi[i-1].onmouseover = function() {
+					fnPoint(this.index);
+					//浮动层显示
+					oP.style.display = "block";
+					//计算浮动层位置
+					oP.style.left = oUl.offsetLeft + this.index * this.offsetWidth - 90+ "px";
+					//匹配浮动层文字内容
+					oP.innerHTML = "<em><b>"+this.index+"</b> 分 "+aMsg[this.index-1].match(/(.+)\|/)[1]+
+					"</em>"+aMsg[this.index-1].match(/\|(.+)/)[1];
+				};
+
+				//鼠标离开后恢复上次评分
+				aLi[i-1].onmouseout = function() {
+					fnPoint();
+					//关闭浮动层
+					oP.style.display = "none";
+				}
+
+				//点击后进行评分处理
+				aLi[i-1].onclick = function() {
+					//这个赋值到底有什么。。。。。。。。。onmouseover---->onclick---->onmouseout
+					//此处为iStar赋值，是为了在触发鼠标离开事件时，使的iScore的取值为iStar，
+					//这样，就保留了鼠标移过时的评分。因为iScore的值和this.index相同
+					//数据变化流程如下：[假如this.index=3,也就是第三颗星星]
+					//			iArg			iStar			iScore
+					//over 		=this.index=3	=0				=3
+					//click		=3				=this.index=3	=3
+					//out 		=undefined		=3				=3
+					//
+					iStar = this.index;
+					//浮动层关闭
+					oP.style.display = "none";
+					//显示点击后的内容
+					oSpan.innerHTML = "<strong>"+(this.index)+"分</strong> ("+aMsg[this.index-1].match(/\|(.+)/)[1]+")";
+				}
+			}
+
+			//评分处理
+			function fnPoint(iArg) {
+				//分数赋值
+				//此处主要是为了分别存储鼠标移过和离开的星数量
+				iScore = iArg || iStar;
+				console.log("iArg  "+iArg);
+				console.log("iStar  "+iStar);
+				console.log("iScore  "+iScore);
+
+				for(i=0;i<aLi.length;i++) {aLi[i].className = i<iScore ? "on" : "";console.log(i);console.log(iScore)}
+			}
+		}
+	</script>
+</head>
+<body>
+	<div id="star">
+    <span>点击星星就能打分</span>
+    <ul>
+        <li><a href="javascript:;"></a></li>
+        <li><a href="javascript:;"></a></li>
+        <li><a href="javascript:;"></a></li>
+        <li><a href="javascript:;"></a></li>
+        <li><a href="javascript:;"></a></li>
+    </ul>
+    <!-- 用来存储最终的评分结果 -->
+    <span></span>
+    <!-- 用来存储弹出层内容 -->
+    <p></p>
+</div>
+</body>
+</html>

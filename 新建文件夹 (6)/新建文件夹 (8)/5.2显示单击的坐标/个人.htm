@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        html,
+        body {
+            cursor: pointer;
+            height: 100%;
+        }
+    </style>
+    <script>
+        window.onload = function () {
+            var event = event || window.event;
+            document.onclick = function (event) {
+                alert("坐标：【" + event.clientX + "," + event.clientY + "】");
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <pre>
+&lt;script&gt;
+    var event = event || window.event;
+    alert("坐标：【" + event.clientX + "," + event.clientY + "】");
+&lt;/script&gt;
+</pre>
+</body>
+
+</html>

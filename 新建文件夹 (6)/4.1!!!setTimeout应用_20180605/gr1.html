@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="box">
+        <li>站长之家</li>
+        <li>行业资讯</li>
+        <li>站长在线</li>
+    </div>
+</body>
+
+</html>
+<script>
+    var lis = document.querySelectorAll('li')
+    for (var i = 0; i <= lis.length; i++) {
+        let a = i
+        lis[i].onmouseover = function () {
+            lis[a].style.fontWeight = '600'
+        }
+        lis[i].onmouseout = function () {
+            lis[a].style.fontWeight = '400'
+        }
+    }
+</script>
+<style>
+    * {
+        list-style: none;
+    }
+
+    .box {
+        height: 30px;
+        width: 80%;
+        background: darkgray;
+        display: flex;
+    }
+
+    li {
+        padding: 0 15px;
+        background: green;
+        line-height: 30px;
+        text-align: content;
+        margin-right: 10px;
+
+    }
+</style>

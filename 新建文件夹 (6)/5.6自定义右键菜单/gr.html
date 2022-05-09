@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        html,
+        body {
+            height: 100%;
+        }
+
+        .box {
+            width: 50px;
+            height: 100%;
+        }
+
+
+        span {
+            display: inline-block;
+            width: 50px;
+            height: 20px;
+
+        }
+
+        .active {
+            color: #fff;
+            background-color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <p>自定义右键菜单，请在页面点击右键查看效果。</p>
+    <div class="box">
+
+        <span>剪切</span>
+        <span>复制</span>
+        <span>粘贴</span>
+
+    </div>
+</body>
+<script>
+    let div = document.querySelector('.box')
+    let span = document.querySelectorAll('span')
+    div.style.display = 'none'
+    for (i = 0; i < span.length; i++) {
+        let a = i
+        span[a].onmousemove = function () {
+
+            span[a].className = 'active'
+        }
+        span[a].onmouseout = function () {
+            span[a].className = ''
+        }
+        span[a].onclick = function () {
+            div.style.display = 'none'
+        }
+    }
+    document.oncontextmenu = function (e) {
+        div.style.display = 'block'
+        return false
+    }
+</script>
+
+</html>

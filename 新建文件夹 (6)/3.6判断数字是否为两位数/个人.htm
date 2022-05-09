@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>mydemo</title>
+	<style type="text/css">
+		#outer {text-align:center;}
+		#f-text {width:50px;margin:0 10px;background:#3DC1AD;}
+	</style>
+	<script type="text/javascript">
+		window.onload = function() {
+			/*获取元素输入框*/
+			var oInput = document.getElementsByTagName("input");
+			for(var i=0;i<oInput.length;i++) {
+			/* 限制输入内容为数字 */
+			oInput[0].onkeyup = function() {
+			this.value = this.value.replace(/[^\d]/,"");				
+			}
+			oInput[1].onclick = function() {
+				/* 提取字符长度 */
+			var oF = oInput[0].value;
+			var n = oF.length;
+			alert(n==2 ? "\u2713是两位数" : "这是" + n + "位数");
+			}
+			}
+		}
+	</script>
+</head>
+<body>
+	<div id="outer"><input type="text" id="f-text"><input type="button" value="是否为两位数"></div>
+</body>
+</html>

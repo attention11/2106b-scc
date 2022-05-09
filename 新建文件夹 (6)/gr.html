@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>mydemo</title>
+    <style>
+        body {
+            font: 12px/1.5 Arial;
+            color: #0aa;
+        }
+
+        p {
+            border: 1px dashed black;
+            padding: 10px;
+        }
+
+        input {
+            cursor: pointer;
+        }
+    </style>
+    <script>
+        window.onload = function () {
+            var oP = document.getElementsByTagName("p");
+            var oInput = document.getElementsByTagName("input");
+            var count = 0;
+            //
+            //
+            //oInput[0]和oInput[1]的功能一样，
+            oInput[1].onclick = function () {
+                var aP = oP[0].innerHTML.split(",");
+                // if(count == 0){aP.splice(0,1);oP[0].innerHTML=aP;this.value="添加January(1)";count=1}
+                // else{aP.splice(0,0,"January(1)");oP[0].innerHTML=aP;this.value="删除January(1)";count=0}
+                // 注意：如果使用三元表达式，表达语句中的多重语句，需要用英文逗点分割，不能使用分号。
+                count == 0 ?
+                    (aP.splice(-1, 1), oP[0].innerHTML = aP, this.value = "添加January(12)", count = 1) :
+                    (aP.splice(-1, 0, "January(12)"), oP[0].innerHTML = aP, this.value = "删除January(12)",
+                        count = 0);
+            }
+            //
+            //
+            //数组的复制和还原			
+            oInput[2].onclick = function () {
+                var bP = oP[1].innerHTML.split(",");
+                var x = bP.splice(0);
+                //oP[1].innerHTML += ","+x; //只复制原始数据
+                oP[1].innerHTML = x.concat(x);
+            }
+            oInput[3].onclick = function () {
+                var bbP = oP[1].innerHTML.split(",");
+                var y = bbP.splice(0, 10);
+                oP[1].innerHTML = y;
+            }
+            //
+            //
+            //还原：
+            var cP = oP[2].innerHTML.split(",");
+            oInput[4].onclick = function () {
+                var x = "red,green,blue,white,yellow,black,brown";
+                oP[2].innerHTML = x;
+            }
+            oInput[5].onclick = function () {
+                cP.splice(0, 3);
+                oP[2].innerHTML = cP;
+            }
+            oInput[6].onclick = function () {
+                cP.splice(1, 2);
+                oP[2].innerHTML = cP;
+            }
+            oInput[7].onclick = function () {
+                cP.splice(1, 0, "orange", "purple");
+                oP[2].innerHTML = cP;
+            }
+            oInput[8].onclick = function () {
+                cP.splice(1, 2, "orange", "purple");
+                oP[2].innerHTML = cP;
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <p>January(1),February(2),March(3),April(4),May(5),June(6),July(7),Aguest(8),September(9),October(10),November(11),December(12)
+    </p>
+    <input type="button" value="删除January(1)">
+    <input type="button" value="删除December(12)">
+    <p>0,1,2,3,4,5,6,7,8,9</p>
+    <input type="button" value="复制">
+    <input type="button" value="还原">
+    <p>red,green,blue,white,yellow,black,brown</p>
+    <input type="button" value="还原">
+    <input type="button" value="删除前三项">
+    <input type="button" value="删除第二至三项">
+    <input type="button" value="在第二项前插入(orange,purple)">
+    <input type="button" value="替换第二项和第三项">
+</body>
+
+</html>

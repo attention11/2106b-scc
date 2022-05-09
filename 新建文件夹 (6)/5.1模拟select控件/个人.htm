@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        body,input,ul,li {margin:0;padding:0;}
+        ul {list-style-type:none;}
+        body {background:grey;font:12px Arial;color:#fff;}
+        #outer {position:relative;width:300px;margin:10px auto;border:3px solid #0ff;}
+        #outer input {margin:0 10px;padding:0 5px;font:12px/17px Arial;cursor:pointer;}
+        #outer button {width:80px;cursor:pointer;}
+
+        #outer ul {position:absolute;top:27px;left:10px;width:158px;border:1px solid #0ff;cursor:pointer;background:#000;display:none;}
+        #outer ul li {padding:0 5px;border-top:1px dotted #aaa;}
+        #outer ul li:first-child {border-top:none;}
+        #outer ul li.current {background:#aaa;}
+    </style>
+    <script>
+        window.onload = function() {
+            var oInput = document.getElementsByTagName("input")[0];
+            var oUl = document.getElementsByTagName("ul")[0];
+            var oLi = document.getElementsByTagName("li");
+            var count = 0;
+            oInput.onclick = function(event) {
+                count==0 ?
+                (oUl.style.display="block",count=1) :
+                (oUl.style.display="",count=0);
+
+                //oUl.style.display = oUl.style.display == "block" ? "none" : "block"
+                //冒泡阻止【非ie浏览器】
+                //event.stopPropagation()
+                //IE浏览器
+                //event.cancelBubble = true; 
+                //
+                //
+                (event || window.event).stopPropagation();
+           };
+
+           for(var i=0;i<oLi.length;i++) {
+                oLi[i].index = i;
+                oLi[i].onmouseover = function() {
+                    for(var x in oLi) oLi[x].className = "";
+                    oLi[this.index].className = "current";
+                }
+                oLi[i].onmouseout = function() {
+                    oLi[this.index].className = ""
+                }
+                oLi[i].onclick = function() {
+                    oInput.value = oLi[this.index].innerHTML;
+                }
+            }
+
+            document.onclick = function() {oUl.style.display=""}
+        }
+    </script>
+</head>
+<body>
+    <div id="outer">
+        <input type="text" value="请选择游戏名称" readonly="readonly">
+        <!-- 按钮的凸出和凹陷效果，字体颜色变化 -->
+        <button>搜  索</button>
+        <!-- 使用内部绝对定位，父元素相对定位， -->
+        <ul>
+            <li>地下城与勇士1</li>
+            <li>地下城与勇士2</li>
+            <li>地下城与勇士3</li>
+            <li>地下城与勇士4</li>
+            <li>地下城与勇士5</li>
+            <li>地下城与勇士6</li>
+            <li>地下城与勇士7</li>
+        </ul>
+    </div>
+</div>
+</div>
+</body>
+</html>

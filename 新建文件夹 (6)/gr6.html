@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>mydemo</title>
+    <style>
+        #box {
+            width: 130px;
+            height: 130px;
+            margin: 20px auto;
+            text-align: center;
+            line-height: 130px;
+            background: #0ff;
+            cursor: pointer;
+        }
+    </style>
+    <script>
+        window.onload = function () {
+            var oBox = document.getElementById("box");
+            var count = time = 0;
+            oBox.onclick = function () {
+                var out = setInterval(function () {
+                    if (time == 0) {
+                        down();
+                        time = 1;
+                        count++;
+                    } else {
+                        up();
+                        time = 0;
+                        count++;
+                    }
+                    console.log(count)
+                    if (count >= 10) {
+                        clearInterval(out)
+                    }
+                }, 50);
+            }
+
+            function timeOut() {
+
+            }
+
+            function down() {
+                oBox.style.opacity = "0.1";
+                return;
+            }
+
+            function up() {
+                oBox.style.opacity = "1";
+                return;
+            }
+
+        }
+    </script>
+</head>
+
+<body>
+    <div id="box">
+        点击我就闪
+    </div>
+</body>
+
+</html>

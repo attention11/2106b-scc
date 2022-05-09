@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<script>
+window.onload = function() {
+    var oP = document.getElementsByTagName("p")[0];
+    document.onkeypress = function(event) {
+        var event = event || window.event;
+        oP.innerHTML = event.keyCode;
+        //此处返回false，有什么特殊的意义吗
+        return false;
+    }
+}
+</script>
+<body>
+<pre>
+    &lt;script type="text/javascript"&gt;
+        window.onload = function() {
+            var oP = document.getElementsByTagName("p")[0];
+            document.onkeydown = function(event) {
+            var event = event || window.event;
+            oP.innerHTML = event.keyCode;
+            return false;
+        }
+    }
+    &lt;/script&gt;
+</pre>
+<p></p>
+</body>
+</html>

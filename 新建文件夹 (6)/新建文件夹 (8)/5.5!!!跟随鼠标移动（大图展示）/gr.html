@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="box">
+        <img src="./1_big.jpg" alt="">
+        <img src="./2_big.jpg" alt="">
+        <img src="./3_big.jpg" alt="">
+        <img src="./4_big.jpg" alt="">
+        <p></p>
+    </div>
+</body>
+<style>
+    img {
+        border: 1px solid black;
+        margin: 0 10px;
+    }
+</style>
+<script>
+    var img = document.querySelectorAll('img')
+    var p = document.querySelector('p')
+    for (var i = 0; i < img.length; i++) {
+        let a = i
+        img[i].onmousemove = function () {
+            img[a].style.border = '1px solid #24adf3'
+        }
+        img[i].onmouseout = function () {
+            img[a].style.border = '1px solid #000'
+        }
+    }
+    window.onload = function () {
+        document.onmousemove = function (event) {
+            console.log(event);
+            p.innerText = `${event.clientX},${event.clientY}`
+        }
+
+
+    }
+</script>
+
+</html>

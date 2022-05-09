@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="box">
+        <li>剪切</li>
+        <li>复制</li>
+        <li>粘贴</li>
+    </div>
+</body>
+
+</html>
+<script>
+    window.onload = function () {
+        var box = document.querySelector('.box')
+        var lis = document.querySelectorAll('li')
+        document.oncontextmenu = function (event) {
+            if (event.button == 2) {
+                console.log(event);
+                box.style.display = 'inline-block'
+                box.style.top = event.clientY + 'px'
+                box.style.left = event.clientX + 'px'
+                for (var i = 0; i < lis.length; i++) {
+                    let a = i
+                    lis[i].onmousemove = function () {
+                        lis[a].style.backgroundColor = '#25aff3'
+                        lis[a].style.color = '#fff'
+                    }
+                    lis[i].onmouseout = function () {
+                        lis[a].style.backgroundColor = '#fff'
+                        lis[a].style.color = '#000'
+                    }
+                }
+            }
+            return false
+        }
+        document.onclick = function (event) {
+            box.style.display = 'none'
+        }
+    }
+</script>
+<style>
+    li {
+        list-style: none;
+    }
+
+    .box {
+        border: 1px solid #00ffff;
+        color: #00aaaa;
+        display: inline-block;
+        /* padding: 5px; */
+        box-sizing: border-box;
+        display: none;
+        position: absolute;
+    }
+
+    li {
+        border-bottom: 1px solid #00ffff;
+    }
+</style>

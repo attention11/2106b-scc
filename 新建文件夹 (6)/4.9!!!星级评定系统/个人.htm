@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>mydemo</title>
+    <style>
+        body,ul,li,p {margin:0;padding:0;}
+        ul {list-style-type:none;}
+        body,html {width:100%;}
+        #outer {width:600px;height:90px;margin:10px auto;font:12px/1.5 Arial;overflow:hidden;zoom:1;}
+
+        #outer ul {width:240px;height:90px;float:left;overflow:hidden;}
+        #outer ul li {position:relative;float:left;margin-right:5px;width:16px;height:16px;border:1px solid #0ff;border-radius:8px;cursor:pointer;}
+        #outer ul li#first {width:100px;border:none;cursor:default;}
+
+        #outer ul li div.tips {position:absolute;top:25px;left:-65px;width:150px;border:1px solid #0fa;display:none;}
+        #outer ul li div.tips span {color:#f00;}
+    </style>
+    <script>
+        window.onload = function() {
+            var oLi = document.getElementsByTagName("li");
+            var oTips = document.getElementsByClassName("tips");
+            var i = count = 0;
+            for(var i=1;i<oLi.length;i++) {
+                oLi[i].index = i;
+                //oLi[i].onmouseover = function() {oTips[this.index-1].style.display = "block"}
+                //绑定onmouseover事件
+                oLi[i].onmouseover = function() {
+                    oTips[this.index-1].style.display = "block";
+                    for (var j=1;j<=this.index;j++) {oLi[j].style.background="#0ff"};   
+                }                
+                    
+                //绑定onmouseout事件
+                oLi[i].onmouseout = function() {
+                    oTips[this.index-1].style.display = "";
+                    for (var j=1;j<=this.index;j++) {oLi[j].style.background=""}; 
+                }
+                    
+
+                //绑定click事件
+                oLi[i].onclick = function() {
+                    //右侧显示具体评价内容
+                    count = this.index;
+                    var oP = document.getElementsByTagName("p");
+                    var oContent = document.getElementById("content");
+                    oContent.innerHTML = "("+oP[this.index-1].innerHTML+")";
+                    //消除弹出层
+                    oTips[this.index-1].style.display = "";
+
+                    for (var j=1;j<=this.index;j++) {oLi[j].style.background="#0ff"}; 
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+    <div id="outer">        
+        <ul>
+            <li id="first">点击方块就能打分</li>
+            <li>
+                <div class="tips"><span>1分 很不满意</span><p>差得太离谱，与卖家描述的严重不符，非常不满</p></div>
+            </li>
+            <li>
+                <div class="tips"><span>2分 不满意</span><p>部分有破损，与卖家描述的不符，不满意</p></div>
+            </li>
+            <li>
+                <div class="tips"><span>3分 一般</span><p>质量一般，没有卖家描述的那么好</p></div>
+            </li>
+            <li>
+                <div class="tips"><span>4分 满意</span><p>质量不错，与卖家描述的基本一致，还是挺满意的</p></div>
+            </li>
+            <li>
+                <div class="tips"><span>5分 非常满意</span><p>质量非常好，与卖家描述的完全一致，非常满意</p></div>
+            </li>
+        </ul>
+        <div id="content"></div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div>
+        <input type="text" maxlength="2" readonly="readonly"><span>点</span>
+        <input type="text" maxlength="2" readonly="readonly"><span>分</span>
+        <input type="text" maxlength="2" readonly="readonly"><span>秒</span>
+    </div>
+</body>
+<script type="text/javascript">
+    window.onload = function () {
+        var oInput = document.getElementsByTagName("input");
+        var myDate = new Date();
+        /*此处仿照页面刷新，最好不要这么用*/
+        setInterval(onload, 1000);
+        time();
+
+        function time() {
+            oInput[0].value = myDate.getHours();
+            oInput[1].value = myDate.getMinutes();
+            myDate.getSeconds() < 10 ? (oInput[2].value = "0" + myDate.getSeconds()) : oInput[2].value = myDate
+                .getSeconds();
+        }
+    }
+
+    window.onload = function () {
+        var oInput = document.getElementsByTagName("input");
+        /*time函数功能，获取当前时间和时间存储，故，需要将new Date()放在函数里面*/
+        setInterval(time, 1000);
+        time();
+
+        function time() {
+            var myDate = new Date();
+            oInput[0].value = myDate.getHours();
+            oInput[1].value = myDate.getMinutes();
+            myDate.getSeconds() < 10 ? (oInput[2].value = "0" + myDate.getSeconds()) : oInput[2].value = myDate
+                .getSeconds();
+        }
+    }
+</script>
+<style type="text/css">
+    body,
+    input,
+    div {
+        margin: 0;
+        padding: 0;
+    }
+
+    div {
+        width: 300px;
+        margin: 10px auto;
+        padding: 30px;
+        background: black;
+        text-align: center;
+    }
+
+    input {
+        outline: none;
+        width: 35px;
+        height: 20px;
+        border: 2px solid grey;
+        margin: 0 10px;
+        line-height: 20px;
+        text-align: center;
+    }
+
+    div span {
+        color: white;
+    }
+</style>
+
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>mydemo</title>
+	<style>
+	body,div,pre,ul,li,p{margin:0;padding:0;}
+		#code {color:#0ff;border:1px solid black;}
+		#code pre {padding:10px;}
+		#btn {width:300px;margin:10px auto;}
+		p {margin:5px;}
+		ul {list-style-type:none;}
+		li {border:1px solid black;padding:5px;}
+	</style>
+	<script>
+		window.onload = function() {
+			//测试,event.target事件
+			var test = document.getElementById("test");
+			test.addEventListener("mouseover",function(e){
+				e.target.style.cssText = "color:red;text-decoration:none;border:none";
+			})
+			test.addEventListener("mouseout",function(e){
+				e.target.style.cssText = "";
+			})
+			//测试，时间监听可以绑定多个事件，常规绑定只能执行最后绑定的时间
+			test.addEventListener("click",hello1);
+			test.addEventListener("click",hello2);
+			function hello1() {alert("hello 1")}
+			function hello2() {alert("hello 2")}
+
+			//个人代码
+			var oInput = document.getElementsByTagName("input");
+			oInput[1].addEventListener("click",function() {
+				oInput[0].value = "我可以点击了";
+				oInput[0].addEventListener("click",oAlert);
+			});
+			oInput[2].addEventListener("click",function() {
+				oInput[0].value = "毫无用处的按钮";
+				oInput[0].removeEventListener("click",oAlert);
+			});
+			function oAlert() {alert("按钮绑定事件成功")};
+
+		}
+	</script>
+</head>
+<body>
+<div id="code">
+<pre>
+&lt;script>
+var EventUtil = {
+	addHandler: function(oElement, sEvent, fnHandler) {
+		oElement.addEventListener ? oElement.addEventListener(sEvent, fnHandler, false) :
+		oElement.attachEvent("on" + sEvent, fnHandler)
+	},
+	removeHandler: function(oELement, sEvent, fnHandler) {
+		oElement.removeEventListener ? oElement.removeEventListener(sEvent, fnHandler, false) :
+		oElement.detachEvent("on" + sEvent, fnHandler)
+	},
+	addLoadHandler: function(fnHandler) {
+		this.addHandler(window,"load",fnHandler)
+	}
+}
+&lt;/script>
+</pre>	
+</div>
+<div id="btn">
+<input type="button" value="毫无用处的按钮">
+<input type="button" value="绑定click">
+<input type="button" value="解除绑定">
+<ul id="test">
+	<li>1</li>
+	<li>2</li>
+	<li>3</li>
+	<li>4</li>
+	<li>5</li>
+	<li>6</li>
+	<li><a href="#">我的a</a></li>
+</ul>
+</div>
+</body>
+</html>
